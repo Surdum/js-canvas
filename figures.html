@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+		  
+		  // количество углов фигуры
+		  
+		  // количество фигур
+		  figureCount = 10;
+		  
+		  for (var j = 0; j < figureCount; ++j) {
+			  /////////////////////////////////////////////////
+			  // КРУГИ
+			  ctx.beginPath();
+			  // ширина контура
+			  ctx.lineWidth = Math.random() * 10;
+			  // x координата
+			  x = Math.random() * canvas.width;
+			  // y координата
+			  y = Math.random() * canvas.height;
+			  // находим максимально возможный радиус
+			  r = Math.random() * Math.min(Math.min(x, canvas.width - x), Math.min(y, canvas.height - y));		  
+			  // задаем случайный цвет
+			  ctx.strokeStyle = "rgba(" + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) +"," + Math.round(Math.random() * 255) + "," + Math.random() + ")";
+			  // с помощью арки рисуем полный круг
+			  ctx.arc(x, y, r, 0, Math.PI * 2, false);
+			  ctx.stroke();			  
+			  ctx.closePath();
+			  
+			  
+			  /////////////////////////////////////////////////
+			  // КВАДРАТЫ
+			  ctx.beginPath();
+			  // ширина контура
+			  ctx.lineWidth = Math.random() * 10;
+			  // x координата
+			  x = Math.random() * canvas.width;
+			  // y координата
+			  y = Math.random() * canvas.height;
+			  // находим максимально возможную длину стороны
+			  m = Math.random() * Math.min(Math.min(x, canvas.width - x), Math.min(y, canvas.height - y));
+			  w = Math.random() * m;
+			  ctx.strokeStyle = "rgba(" + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) +"," + Math.round(Math.random() * 255) + "," + Math.random() + ")";
+			  ctx.strokeRect(x, y, w, w);
+			  
+			  /////////////////////////////////////////////////
+			  // ПРЯМОУГОЛЬНИКИ
+			  ctx.beginPath();
+			  // ширина контура
+			  ctx.lineWidth = Math.random() * 10;
+			  // x координата
+			  x = Math.random() * canvas.width;
+			  // y координата
+			  y = Math.random() * canvas.height;
+			  // находим максимально возможную длину стороны
+			  m1 = Math.random() * Math.min(x, canvas.width - x);
+			  m2 = Math.random() * Math.min(y, canvas.height - y);
+			  
+			  w = Math.random() * m1;
+			  h = Math.random() * m2;
+			  ctx.strokeStyle = "rgba(" + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) +"," + Math.round(Math.random() * 255) + "," + Math.random() + ")";
+			  ctx.strokeRect(x, y, w, h);
+		  }
+		  
+	  }
+    
+  </script>
+ </head>
+ <body onload="draw();">
+   <canvas id="canvas" width="666" height="666" style="border: 2px solid blue;"></canvas>
+ </body>
+</html>
