@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');		  
+		  // количество фигур
+		  figureCount = 20;
+		  
+		  for (var j = 0; j < figureCount; ++j) {
+			  ctx.beginPath();
+			  shift = Math.random() * 360;
+			  // ширина контура
+			  ctx.lineWidth = Math.random() * 10;
+			  // x координата
+			  x = Math.random() * canvas.width;
+			  // y координата
+			  y = Math.random() * canvas.height;
+
+			  // находим максимально возможный радиус
+			  r = Math.random() * Math.min(Math.min(x, canvas.width - x), Math.min(y, canvas.height - y));		  
+
+			  // задаем случайный цвет
+			  ctx.strokeStyle = "rgba(" + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) +"," + Math.round(Math.random() * 255) + "," + Math.random() + ")";
+			  // с помощью арки рисуем полный круг
+			  
+			  first_x = Math.random() * r;
+			  first_y = Math.random() * r;
+			  ctx.moveTo(first_x * Math.cos(360 / 4 * (Math.PI / 180) * 0 + shift) + x, first_y * Math.sin(360 / 4 * (Math.PI / 180) * 0 + shift) + y);
+			  ctx.lineTo(first_x * Math.cos(360 / 4 * (Math.PI / 180) * 1 + shift) + x, first_y * Math.sin(360 / 4 * (Math.PI / 180) * 1 + shift) + y);
+			  ctx.moveTo(first_x * Math.cos(360 / 4 * (Math.PI / 180) * 1 + shift) + x, first_y * Math.sin(360 / 4 * (Math.PI / 180) * 1 + shift) + y);
+			  for (var i = 2; i < 4; ++i) {
+				  next_x = Math.random() * r;
+				  next_y = Math.random() * r;
+				  ctx.lineTo(next_x * Math.cos(360 / 4 * (Math.PI / 180) * i + shift) + x, next_y * Math.sin(360 / 4 * (Math.PI / 180) * i + shift) + y);
+				  ctx.moveTo(next_x * Math.cos(360 / 4 * (Math.PI / 180) * i + shift) + x, next_y * Math.sin(360 / 4 * (Math.PI / 180) * i + shift) + y);
+			  }
+			  ctx.lineTo(first_x * Math.cos(360 / 4 * (Math.PI / 180) * 0 + shift) + x, first_y * Math.sin(360 / 4 * (Math.PI / 180) * 0 + shift) + y);
+			  ctx.stroke();			  
+			  ctx.closePath();
+			  
+			  
+		  }
+		  
+	  }
+    
+  </script>
+ </head>
+ <body onload="draw();">
+   <canvas id="canvas" width="666" height="666" style="border: 2px solid blue;"></canvas>
+ </body>
+</html>
