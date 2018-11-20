@@ -27,9 +27,9 @@
 			  // задаем случайный цвет
 			  ctx.strokeStyle = "rgba(" + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) +"," + Math.round(Math.random() * 255) + "," + Math.random() + ")";
 			  // строим парашу
-			  for (var i = 0; i < angleCount; i++) {
-				ctx.moveTo(r * Math.cos(360 / angleCount * (Math.PI / 180) * i + shift) + x, r * Math.sin(360 / angleCount * (Math.PI / 180) * i + shift) + y);
-				ctx.lineTo(r * Math.cos(360 / angleCount * (Math.PI / 180) * (i + 1) + shift) + x, r * Math.sin(360 / angleCount * (Math.PI / 180) * (i + 1) + shift) + y);
+			  ctx.moveTo(r * Math.cos(shift) + x, r * Math.sin(shift) + y);
+			  for (var i = 1; i <= angleCount + 1; i++) {
+				ctx.lineTo(r * Math.cos(360 / angleCount * (Math.PI / 180) * i + shift) + x, r * Math.sin(360 / angleCount * (Math.PI / 180) * i + shift) + y);
 			  }
 			  ctx.stroke();			  
 			  ctx.closePath();
