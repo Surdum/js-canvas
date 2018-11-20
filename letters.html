@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+		  
+		  // количество углов фигуры
+		  // количество фигур
+		  figureCount = 20;
+		  
+		  for (var j = 0; j < figureCount; ++j) {
+			  ctx.beginPath();
+			  // ширина контура
+			  ctx.lineWidth = Math.random() * 10;
+			  // кегль текста
+			  h = Math.random() * 100;
+			  // x координата
+			  x = Math.random() * (canvas.width - h);
+			  // y координата
+			  y = Math.random() * (canvas.height - h) + h;	  
+			  // задаем случайный цвет
+			  ctx.strokeStyle = "rgba(" + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) +"," + Math.round(Math.random() * 255) + "," + Math.random() + ")";
+			  // рендер текста
+			  ctx.font = h + "pt serif";
+			  ctx.strokeText(String.fromCharCode(Math.random() * 31 + 1040), x, y);
+			  ctx.closePath();
+		  }
+		  
+	  }
+    
+  </script>
+ </head>
+ <body onload="draw();">
+   <canvas id="canvas" width="666" height="666" style="border: 2px solid blue;"></canvas>
+ </body>
+</html>
